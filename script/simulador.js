@@ -15,6 +15,12 @@ while (!nombre) {
 
 alert(`¡Hola, ${nombre}! Bienvenido a nuestro simulador de préstamos.`);
 
+// Lista de préstamos anteriores
+const prestamosAnteriores = [
+    { cliente: 'Juan', monto: 60000 },
+    { cliente: 'María', monto: 45000 },
+    { cliente: 'Pedro', monto: 70000 },
+];
 
 const montoTotal = document.querySelector('#montoTotal');
 const montoSolicitado = document.querySelector('#montoSolicitado');
@@ -32,7 +38,6 @@ btnNo.addEventListener('click', () => {
     formularioCotizacion.reset();
     ultimoFormulario.classList.remove('disable');
 });
-
 
 const ultimoFormulario = document.querySelector('#ultimoFormulario');
 const btnFormFin = document.querySelector('#btnFormFin');
@@ -54,14 +59,31 @@ function calcularPrestamo() {
     let interes = 0;
 
     if (montoSolicitadoValor > 0.5 * montoTotalValor) {
-        interes = 6; // Si el monto a solicitar supera el 50% del valor total del inmueble, el interés es del 8%
+        interes = 6; // Si el monto a solicitar supera el 50% del valor total del inmueble, el interés es del 6%
     } else {
-        interes = 4.5; // Si el monto a solicitar es menor, el interés es del 5%
+        interes = 4.5; // Si el monto a solicitar es menor, el interés es del 4.5%
     }
 
     const tasaInteresMensual = interes / 12 / 100; // Tasa de interés mensual
     const cuota = (montoSolicitadoValor * tasaInteresMensual) / (1 - Math.pow(1 + tasaInteresMensual, -plazoValor));
     const totalIntereses = (cuota * plazoValor - montoSolicitadoValor).toFixed(2);
+
+    // Filtrar préstamos anteriores por monto mayor a U$S 50000
+    const prestamosFiltrados = prestamosAnteriores.filter((prestamo) => prestamo.monto > 50000);
+
+    // Mostrar los préstamos filtrados
+    console.log('Préstamos anteriores con monto mayor a U$S 50000:');
+    console.log(prestamosFiltrados);
+
+    // Mostrar el préstamo actual si es mayor a U$S 50000
+    if (montoSolicitadoValor > 50000) {
+        console.log('Préstamo actual mayor a U$S 50000:');
+        console.log({
+            monto: montoSolicitadoValor,
+            plazo: plazoValor,
+            interes: interes
+        });
+    }
 
     resultado.classList.remove('disable');
     resultadoTexto.innerHTML = `Cuota mensual: U$S ${cuota.toFixed(2)} <br> <br> Intereses totales: U$S ${totalIntereses}`;
