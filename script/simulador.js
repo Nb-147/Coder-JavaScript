@@ -15,7 +15,7 @@ while (!nombre) {
 
 alert(`¡Hola, ${nombre}! Bienvenido a nuestro simulador de préstamos.`);
 
-//Variables
+
 const montoTotal = document.querySelector('#montoTotal');
 const montoSolicitado = document.querySelector('#montoSolicitado');
 const plazo = document.querySelector('#plazo');
@@ -33,7 +33,7 @@ btnNo.addEventListener('click', () => {
     ultimoFormulario.classList.remove('disable');
 });
 
-// Formulario Final
+
 const ultimoFormulario = document.querySelector('#ultimoFormulario');
 const btnFormFin = document.querySelector('#btnFormFin');
 const inputsFormularioFin = document.querySelectorAll('.simulador__formularioFin-form-input');
