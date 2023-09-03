@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Simulador de Préstamo</title>
+</head>
+
+<body>
+    <main class="simulador">
+        <h1 class="titulo"><strong>Simulador de Préstamos</strong></h1>
+
+        <form id="formularioCotizacion" class="simulador__formulario-cotizacion">
+            <label for="montoTotal"><strong>Monto total del inmueble (U$S):</strong></label>
+            <input class="simulador__formulario-cotizacion-inputs" type="number" id="montoTotal" name="montoTotal"
+                min="0" />
+
+            <label for="montoSolicitado"><strong>Monto a solicitar (U$S):</strong></label>
+            <input class="simulador__formulario-cotizacion-inputs" type="number" id="montoSolicitado"
+                name="montoSolicitado" min="0" />
+
+            <label for="plazo"><strong>Plazo fijo:</strong></label>
+            <select class="simulador__formulario-cotizacion-select" id="plazo" name="plazo">
+                <option value="12">12 meses</option>
+                <option value="24">24 meses</option>
+                <option value="36">36 meses</option>
+            </select>
+
+            <button class="simulador__formulario-cotizacion-button buttonDisable" id="btnCotizar" type="submit">
+                <strong>Calcular</strong>
+            </button>
+        </form>
+
+        <section class="simulador__result disable" id="resultado">
+            <div id="resultadoTexto"></div>
+            <div id="resultadoInteres" class="disable">
+                <p>Interés anual: <span id="interesAnual"></span>%</p>
+            </div>
+            <div class="simulador__result-actions">
+                <p>¿Desea calcular nuevamente?</p>
+                <p>Si el calculo es correcto seleccione "No" y rellene el formulario</p>
+                <button id="btnSi">Si</button><button id="btnNo">No</button>
+            </div>
+        </section>
+
+        <section class="simulador__formularioFin disable" id="ultimoFormulario">
+            <h3 class="simulador__formularioFin-title">
+                Complete el Formulario
+            </h3>
+            <form class="simulador__formularioFin-form" id="formulario2">
+                <input class="simulador__formularioFin-form-input" type="text" placeholder="Nombre" name="nombre"
+                    id="nombre" />
+                <input class="simulador__formularioFin-form-input" type="text" placeholder="Apellido" name="apellido"
+                    id="apellido" />
+                <input class="simulador__formularioFin-form-input" type="text" placeholder="Email" name="email"
+                    id="email" />
+                <select class="simulador__formularioFin-form-input" name="documentType" id="documentType">
+                    <option value="">Tipo de documento</option>
+                    <option value="CI">Cedula de Identidad</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                </select>
+                <input class="simulador__formularioFin-form-input" type="text" placeholder="Numero de documento"
+                    name="documentNumber" id="documentNumber" />
+                <p class="disable error">Por favor selecciona un tipo de documento</p>
+                <input class="simulador__formularioFin-form-input" type="text" placeholder="Telefono" name="telefono"
+                    id="telefono" />
+                <button class="simulador__formularioFin-form-button buttonDisable" type="submit" id="btnFormFin">
+                    Enviar
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <script src="simulador.js"></script>
+</body>
+</html>
