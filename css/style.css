@@ -26,6 +26,11 @@ body {
     background-color: #ffffff;
     border-radius: 5px;
     gap: .5rem;
+    text-shadow: 2px 2px 7px #fff;
+    background-image: url(../img/background.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: auto;
 }
 
 .simulador__formulario-cotizacion-inputs {
@@ -64,6 +69,11 @@ body {
     gap: .5rem;
     text-align: center;
     color: #000000;
+    text-shadow: 1px 1px 5px #000000;
+    background-image: url(../img/background2.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: auto;
 }
 
 .simulador__result-actions button {
@@ -91,9 +101,13 @@ body {
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 5px;
     gap: .5rem;
+    background-image: url(../img/background3.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: auto;
 }
 
 .simulador__formularioFin-title {
@@ -101,7 +115,7 @@ body {
     text-align: center;
     margin: 1rem;
     margin-bottom: 0rem;
-    text-shadow: 2px 2px 7px #000000;
+    text-shadow: 2px 2px 5px #ffffff;
 }
 
 .simulador__formularioFin-form {

@@ -54,18 +54,17 @@ function calcularPrestamo() {
     let interes = 0;
 
     if (montoSolicitadoValor > 0.5 * montoTotalValor) {
-        // Si el monto a solicitar supera el 50% del valor total del inmueble, el interés es del 8%
-        interes = 8;
+        interes = 6; // Si el monto a solicitar supera el 50% del valor total del inmueble, el interés es del 8%
     } else {
-        // Si el monto a solicitar es menor, el interés es del 5%
-        interes = 5;
+        interes = 4.5; // Si el monto a solicitar es menor, el interés es del 5%
     }
 
-    const cuota = (montoSolicitadoValor * (interes / 100) / (1 - Math.pow(1 + (interes / 100), -plazoValor))).toFixed(2);
+    const tasaInteresMensual = interes / 12 / 100; // Tasa de interés mensual
+    const cuota = (montoSolicitadoValor * tasaInteresMensual) / (1 - Math.pow(1 + tasaInteresMensual, -plazoValor));
     const totalIntereses = (cuota * plazoValor - montoSolicitadoValor).toFixed(2);
 
     resultado.classList.remove('disable');
-    resultadoTexto.innerHTML = `Cuota mensual: U$S ${cuota} <br> <br> Intereses totales: U$S ${totalIntereses}`;
+    resultadoTexto.innerHTML = `Cuota mensual: U$S ${cuota.toFixed(2)} <br> <br> Intereses totales: U$S ${totalIntereses}`;
     resultadoInteres.classList.remove('disable');
     interesAnual.textContent = interes;
 
@@ -73,7 +72,7 @@ function calcularPrestamo() {
         montoTotal: montoTotalValor,
         montoSolicitado: montoSolicitadoValor,
         plazo: plazoValor,
-        cuota: cuota,
+        cuota: cuota.toFixed(2),
         totalIntereses: totalIntereses,
         interes: interes
     });
@@ -124,7 +123,7 @@ function enviarFormulario() {
     resultado.classList.add('disable');
     btnFormFin.classList.add('buttonDisable');
 
-    alert('Los datos aportados en el formulario fueron enviados correctamente');
+    alert('¡Los datos aportados en el formulario fueron enviados correctamente!');
 }
 
 // Eventos
@@ -151,8 +150,8 @@ ultimoFormulario.addEventListener('submit', (e) => {
     }
 });
 
-document.addEventListener('keypress', (e) => {
-    if (e.keyCode === 13 && validarFormularioFinal()) {
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && validarFormularioFinal()) {
         enviarFormulario();
     }
 });
