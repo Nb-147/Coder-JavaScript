@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="/src/assets/img/favicon.jpg" />
-    <link rel="stylesheet" href="./src/assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
@@ -61,6 +61,7 @@
                         </button>
                     </a>
                 </div>
+            </div>
 
         </nav>
 
@@ -96,76 +97,93 @@
             </div>
         </div>
 
-        <div class="contenedor">
-            <div class="grid__contenedor">
-                <div class="caja">
-                    <h2>Bienvenido a Bike Store</h2>
-                    <p>Ya seas un ciclista experimentado que busca mejorar tu equipo o un principiante que busca tu
-                        primera bicicleta, en Bike Store encontrarás una amplia variedad de opciones. Desde bicicletas
-                        de montaña robustas hasta elegantes bicicletas de carretera y mucho más, nuestra selección está
-                        diseñada para satisfacer todas tus necesidades.</p>
+        <section>
+
+            <div class="cuerpo">
+
+                <div class="centrar">
+                    <form action="">
+
+                        <fieldset class="contacto__form">
+                            <div>
+                                <legend>
+                                    <h2 class="titulo">Contacto</h2>
+                                </legend>
+                                <hr>
+                            </div>
+
+                            <div>
+                                <label for="nombre">Nombre y Apellido:</label>
+                                <input class="contacto__nombre" type="email" id="nombre" placeholder="Nombre">
+                            </div>
+
+                            <div>
+                                <label for="mensaje">Correo electronico</label>
+                                <input class="contacto__nombre" type="email" id="email" placeholder="ejemplo@gmail.com">
+                            </div>
+
+                            <div>
+                                <label for="mensaje">Ingrese su mensaje</label>
+                                <textarea class="contacto__mensaje" name="mensaje" id="mensaje"
+                                    placeholder="Mensaje"></textarea>
+                            </div>
+
+                            <div>
+                                <label for="asunto">Asunto del mensaje</label>
+                                <select name="" id="asunto">
+                                    <option value="consulta">Consulta</option>
+                                    <option value="Sugerencias">Compra</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+
+                            <hr>
+
+                            <div>
+                                <input class="btn" type="submit" value="Enviar">
+                                <input class="btn" type="reset" value="Borrar">
+                            </div>
+
+                        </fieldset>
+
+                    </form>
                 </div>
 
-
-
-                <div class="caja">
-                    <h2>Calidad y Servicio al Cliente</h2>
-                    <p>En Bike Store, no solo te ofrecemos bicicletas de alta calidad de marcas de renombre, como Trek,
-                        Scott, Bianchi y Specialized, sino que también nos enorgullece brindar un servicio excepcional
-                        al cliente. Nuestro equipo apasionado y conocedor está aquí para responder tus preguntas,
-                        ofrecer asesoramiento experto y garantizar que encuentres la bicicleta perfecta para ti.</p>
-                </div>
-
-
-                <div class="caja">
-                    <h2>Únete a la Comunidad Bike Store</h2>
-                    <p>En Bike Store, no solo somos una tienda; somos una comunidad de ciclistas apasionados. Únete a
-                        nosotros en emocionantes eventos de ciclismo, recorridos en grupo y descubre rutas locales
-                        espectaculares. Comparte tus experiencias y conoce a otros amantes de las bicicletas mientras
-                        creas recuerdos duraderos.</p>
-                </div>
-
-
-
-                <div class="caja">
-                    <h2>Visita Nuestra Tienda Hoy Mismo</h2>
-                    <p>Te invitamos a explorar nuestra tienda en línea o visitarnos en persona. Descubre las últimas
-                        tendencias en ciclismo, encuentra ofertas increíbles y comienza tu viaje hacia una vida más
-                        activa y saludable con Bike Store.</p>
-                    <p>¡Estamos emocionados de ser parte de tu aventura en bicicleta!</p>
-                </div>
             </div>
-        </div>
-    </main>
 
-    <footer>
-        <h3><strong>&copy; 2023 BIKE STORE</strong></h3>
 
-        <div>
-            <ul>
-                <li class="icon__footer"><a href="" target="_blank"><img src="./src/assets/icon/instagram.png"
-                            alt="Instagram"></a>
-                </li>
-                <li class="icon__footer"><a href="" target="_blank"><img src="./src/assets/icon/twitter.png"
-                            alt="Twitter"></li>
-                </a>
-                <li class="icon__footer"><a href="" target="_blank"><img src="./src/assets/icon/facebook.png"
-                            alt="facebook"></a>
-                </li>
-                <li class="icon__footer"><a href="" target="_blank"><img src="./src/assets/icon/youtube.png"
-                            alt="youtube"></a>
-                </li>
-            </ul>
-        </div>
 
-    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/src/js/script.js"></script>
-    <script src="/src/js/carrito.js"></script>
+
+            <footer>
+                <h3><strong>&copy; 2023 BIKE STORE</strong></h3>
+
+                <div>
+                    <ul>
+                        <li class="icon__footer"><a href="" target="_blank"><img src="../assets/icon/instagram.png"
+                                    alt="Instagram"></a>
+                        </li>
+                        <li class="icon__footer"><a href="" target="_blank"><img src="../assets/icon/twitter.png"
+                                    alt="Twitter">
+                        </li>
+                        </a>
+                        <li class="icon__footer"><a href="" target="_blank"><img src="../assets/icon/facebook.png"
+                                    alt="facebook"></a>
+                        </li>
+                        <li class="icon__footer"><a href="" target="_blank"><img src="../assets/icon/youtube.png"
+                                    alt="youtube"></a>
+                        </li>
+                    </ul>
+                </div>
+
+            </footer>
+
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+                crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="/src/js/script.js"></script>
 </body>
 
 </html>

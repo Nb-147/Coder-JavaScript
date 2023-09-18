@@ -1,0 +1,338 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "font";
+    src: url("/src/assets/font/font.ttf");
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    background: linear-gradient(to right, rgb(0, 0, 0), rgb(162, 162, 162));
+    color: black;
+    text-shadow: 1px 1px 7px #ffffff;
+    position: sticky;
+    top: 0;
+}
+
+header img {
+    float: left;
+}
+
+h1, h2{
+    font-family: "font";
+}
+
+h3 {
+    font-size: 1rem;
+    font-family: "font";
+}
+
+nav {
+    text-align: center;
+    float: right;
+    text-shadow: 1px 1px 7px #ffffff;
+    font-family: "font";
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(../img/background2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+body hr {
+    visibility: collapse;
+}
+
+footer {
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+    background: linear-gradient(to right, rgb(0, 0, 0), rgb(162, 162, 162));
+    text-shadow: 1px 5px 7px #000000;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+footer div ul li {
+    display: inline-block;
+    margin-right: 40px;
+}
+
+footer div ul li a img {
+    width: 100%;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+footer div ul li a img:hover {
+    opacity: 1;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid__contenedor {
+    padding: 2%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 50px;
+    transition: transform 0.3s ease;
+}
+
+.caja {
+    background-color: rgb(143, 143, 143);
+    padding: 20px;
+    border: 2px solid #000000;
+    text-align: center;
+    text-shadow: 3px 1px 9px #353333;
+    margin: 10px;
+}
+
+.caja:hover {
+    transform: translateY(-10px);
+}
+
+@media (max-width: 456px) {
+    .grid__contenedor {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(1, auto);
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .caja {
+        margin: 10px;
+    }
+}
+
+.icon__footer {
+    max-width: 2rem;
+}
+
+.navbar-nav .nav-link {
+    color: rgb(0, 0, 0);
+}
+
+.offcanvas {
+    background-image: url(../img/navbar.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media (min-width: 1200px) and (orientation: landscape) {
+    .offcanvas {
+        background-image: none;
+    }
+}
+
+.productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.producto {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+.producto img {
+    max-width: 100%;
+    height: auto;
+}
+
+.carrito {
+    background-color: #000000;
+    color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+#carrito-list {
+    list-style: none;
+    padding: 0;
+    color: #ffffff;
+}
+
+.producto-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.btnAgregar {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.btnEliminar {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+footer {
+    background: linear-gradient(to right, rgb(0, 0, 0), rgb(162, 162, 162));
+    text-align: center;
+    padding: 10px 0;
+    color: black;
+    text-shadow: 1px 1px 7px #ffffff;
+}
+
+.publicidad {
+    background: linear-gradient(to right, rgb(0, 0, 0), rgb(162, 162, 162));
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.marca {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.imagen-marca {
+    max-width: 30%;
+}
+
+.cuerpo {
+    margin-top: 50px;
+    margin-block-end: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.centrar {
+    max-width: 600px;
+    width: 100%;
+}
+
+.contacto__form {
+    background-color: #6d6c6c;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.contacto__form h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contacto__form hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+.contacto__form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.contacto__nombre,
+.contacto__email,
+.contacto__mensaje {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contacto__mensaje {
+    height: 150px;
+}
+
+.contacto__form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contacto__form input[type="submit"],
+.contacto__form input[type="reset"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.contacto__form input[type="reset"] {
+    background-color: #ff0000;
+    margin-left: 10px;
+}
+
+.producto {
+    max-width: 300px;
+    margin: 0 auto;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+}
+
+.producto-imagen {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+.seccion {
+    margin-bottom: 20px;
+}
+
+.productos-ruta,
+.productos-montaña {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.titulo {
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 7px #000000;
+    text-align: center;
+}
+
+.form {
+    background-color: #000000;
+}
