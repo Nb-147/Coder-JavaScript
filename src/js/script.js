@@ -211,7 +211,6 @@ const dbProductos = [
     },
 ];
 
-
 const carritoGuardado = localStorage.getItem("carrito");
 const carrito = carritoGuardado ? JSON.parse(carritoGuardado) : [];
 
@@ -387,6 +386,10 @@ function mostrarFormulario() {
                         <textarea class="form-control" id="direccion" placeholder="Dirección de Envío" required></textarea>
                     </div>
                     <div class="form-group">
+                        <label for="Celular"></label>
+                        <input type="text" class="form-control" id="celular" placeholder="Celular" required>
+                    </div>
+                    <div class="form-group">
                         <label for="tarjeta"></label>
                         <input type="text" class="form-control" id="tarjeta" placeholder="Número de Tarjeta" required>
                     </div>
@@ -404,6 +407,7 @@ function mostrarFormulario() {
         showCancelButton: true,
         cancelButtonText: 'Cancelar',
         showConfirmButton: true,
+
 
     }).then((result) => {
         if (result.isDismissed) {
@@ -458,4 +462,3 @@ function mostrarFormulario() {
 function mayus(texto) {
     return texto.charAt(0).toUpperCase() + texto.slice(1);
 }
-

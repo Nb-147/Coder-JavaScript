@@ -23,13 +23,14 @@ header img {
     float: left;
 }
 
-h1, h2{
+h1,
+h2,
+h3 {
     font-family: "font";
 }
 
 h3 {
     font-size: 1rem;
-    font-family: "font";
 }
 
 nav {
@@ -59,7 +60,6 @@ footer {
     padding: 10px 0;
     background: linear-gradient(to right, rgb(0, 0, 0), rgb(162, 162, 162));
     text-shadow: 1px 5px 7px #000000;
-    padding: 10px;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -186,7 +186,8 @@ footer div ul li a img:hover {
     border-bottom: 1px solid #ddd;
 }
 
-.btnAgregar {
+.btnAgregar,
+.btnEliminar {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -196,10 +197,7 @@ footer div ul li a img:hover {
 
 .btnEliminar {
     background-color: #ff0000;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
+    margin-left: 10px;
 }
 
 footer {
@@ -322,7 +320,7 @@ footer {
 .productos-ruta,
 .productos-montaña {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(4, 1fr);
     flex-wrap: wrap;
     gap: 20px;
 }
