@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: "font";
-    src: url("/src/assets/font/font.ttf");
+    src: url("../font/font.ttf");
 }
 
 header {

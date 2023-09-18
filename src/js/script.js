@@ -3,210 +3,210 @@ const dbProductos = [
         id: 1,
         nombre: "Scott Rc Pro",
         precio: 9900,
-        imagen: "/src/assets/img/scott1.webp",
+        imagen: ("/src/assets/img/scott1.webp"),
         categoria: "Montaña"
     },
     {
         id: 2,
         nombre: "Scott Spark Rc 900",
         precio: 8900,
-        imagen: "/src/assets/img/scott2.webp",
+        imagen: ("/src/assets/img/scott2.webp"),
         categoria: "Montaña"
     },
     {
         id: 3,
         nombre: "Scott Scale 900 Rc",
         precio: 5290,
-        imagen: "/src/assets/img/scott3.webp",
+        imagen: ("/src/assets/img/scott3.webp"),
         categoria: "Montaña"
     },
     {
         id: 4,
         nombre: "Scott Aspect 950",
         precio: 939,
-        imagen: "/src/assets/img/scott4.webp",
+        imagen: ("/src/assets/img/scott4.webp"),
         categoria: "Montaña"
     },
     {
         id: 5,
         nombre: "Scott Contessa 60",
         precio: 769,
-        imagen: "/src/assets/img/scott5.webp",
+        imagen: ("/src/assets/img/scott5.webp"),
         categoria: "Montaña"
     },
     {
         id: 6,
         nombre: "Scott Addict Rc 15",
         precio: 9590,
-        imagen: "/src/assets/img/scott6.webp",
+        imagen: ("/src/assets/img/scott6.webp"),
         categoria: "Ruta"
     },
     {
         id: 7,
         nombre: "Scott Foil RC 30",
         precio: 6390,
-        imagen: "/src/assets/img/scott7.webp",
+        imagen: ("/src/assets/img/scott7.webp"),
         categoria: "Ruta"
     },
     {
         id: 8,
         nombre: "Scott Addict Rc 40",
         precio: 6190,
-        imagen: "/src/assets/img/scott8.webp",
+        imagen: ("/src/assets/img/scott8.webp"),
         categoria: "Ruta"
     },
     {
         id: 9,
         nombre: "Scott Addict 20",
         precio: 2969,
-        imagen: "/src/assets/img/scott9.webp",
+        imagen: ("/src/assets/img/scott9.webp"),
         categoria: "Ruta"
     },
     {
         id: 10,
         nombre: "Scott Speedster 30",
         precio: 1649,
-        imagen: "/src/assets/img/scott10.webp",
+        imagen: ("/src/assets/img/scott10.webp"),
         categoria: "Ruta"
     },
     {
         id: 11,
         nombre: "Trek Madone SLR 9 AXS Gen 7",
         precio: 17690,
-        imagen: "/src/assets/img/trek1.png",
+        imagen: ("/src/assets/img/trek1.png"),
         categoria: "Ruta"
     },
     {
         id: 12,
         nombre: "Trek Émonda SL 7 Disc",
         precio: 7700,
-        imagen: "/src/assets/img/trek2.webp",
+        imagen: ("/src/assets/img/trek2.webp"),
         categoria: "Ruta"
     },
     {
         id: 13,
         nombre: "Trek Domane 5 Disc",
         precio: 2700,
-        imagen: "/src/assets/img/trek3.jpeg",
+        imagen: ("/src/assets/img/trek3.jpeg"),
         categoria: "Ruta"
     },
     {
         id: 14,
         nombre: "TREK RAIL 5 (Eléctrica)",
         precio: 7400,
-        imagen: "/src/assets/img/trek4.jpeg",
+        imagen: ("/src/assets/img/trek4.jpeg"),
         categoria: "Montaña"
     },
     {
         id: 15,
         nombre: "Trek Procaliber 9.5",
         precio: 3200,
-        imagen: "/src/assets/img/trek5.jpeg",
+        imagen: ("/src/assets/img/trek5.jpeg"),
         categoria: "Montaña"
     },
     {
         id: 16,
         nombre: "Trek X-Caliber 8",
         precio: 2140,
-        imagen: "/src/assets/img/trek6.jpeg",
+        imagen: ("/src/assets/img/trek6.jpeg"),
         categoria: "Montaña"
     },
     {
         id: 17,
         nombre: "TREK Verve 1",
         precio: 900,
-        imagen: "/src/assets/img/trek7.jpeg",
+        imagen: ("/src/assets/img/trek7.jpeg"),
         categoria: "Montaña"
     },
     {
         id: 18,
         nombre: "Oltre Rc Tour de France",
         precio: 19000,
-        imagen: "/src/assets/img/bianchi1.jpg",
+        imagen: ("/src/assets/img/bianchi1.jpg"),
         categoria: "Ruta"
     },
     {
         id: 19,
         nombre: "Bianchi Aria E-Road",
         precio: 6590,
-        imagen: "/src/assets/img/bianchi2.jpg",
+        imagen: ("/src/assets/img/bianchi2.jpg"),
         categoria: "Ruta"
     },
     {
         id: 20,
         nombre: "Bianchi Nirone 7 Alu Claris",
         precio: 1349,
-        imagen: "/src/assets/img/bianchi3.jpg",
+        imagen: ("/src/assets/img/bianchi3.jpg"),
         categoria: "Ruta"
     },
     {
         id: 21,
         nombre: "Bianchi Methanol",
         precio: 7790,
-        imagen: "/src/assets/img/bianchi4.jpg",
+        imagen: ("/src/assets/img/bianchi4.jpg"),
         categoria: "Montaña"
     },
     {
         id: 22,
         nombre: "Bianchi Nitron 9.4",
         precio: 2890,
-        imagen: "/src/assets/img/bianchi5.jpg",
+        imagen: ("/src/assets/img/bianchi5.jpg"),
         categoria: "Montaña"
     },
     {
         id: 23,
         nombre: "Bianchi Duel / 29",
         precio: 849,
-        imagen: "/src/assets/img/bianchi6.jpg",
+        imagen: ("/src/assets/img/bianchi6.jpg"),
         categoria: "Montaña"
     },
     {
         id: 24,
         nombre: "DIVERGE STR S-WORKS",
         precio: 15490,
-        imagen: "/src/assets/img/specialized1.jpg",
+        imagen: ("/src/assets/img/specialized1.jpg"),
         categoria: "Ruta"
     },
     {
         id: 25,
         nombre: "DIVERGE EXPERT CARBON",
         precio: 6536,
-        imagen: "/src/assets/img/specialized2.jpg",
+        imagen: ("/src/assets/img/specialized2.jpg"),
         categoria: "Ruta"
     },
     {
         id: 26,
         nombre: "Allez E5 Sport",
         precio: 1690,
-        imagen: "/src/assets/img/specialized3.jpg",
+        imagen: ("/src/assets/img/specialized3.jpg"),
         categoria: "Ruta"
     },
     {
         id: 27,
         nombre: "Allez E5 Flored",
         precio: 1290,
-        imagen: "/src/assets/img/specialized4.jpg",
+        imagen: ("/src/assets/img/specialized4.jpg"),
         categoria: "Ruta"
     },
     {
         id: 28,
         nombre: "S-WORKS EPIC WORLD CUP",
         precio: 15690,
-        imagen: "/src/assets/img/specialized5.jpg",
+        imagen: ("/src/assets/img/specialized5.jpg"),
         categoria: "Montaña"
     },
     {
         id: 29,
         nombre: "EPIC COMP BRA FLORED",
         precio: 4712,
-        imagen: "/src/assets/img/specialized6.jpg",
+        imagen: ("/src/assets/img/specialized6.jpg"),
         categoria: "Montaña"
     },
     {
         id: 30,
         nombre: "ROCKHOPPER SPORT",
         precio: 890,
-        imagen: "/src/assets/img/specialized7.jpg",
+        imagen: ("/src/assets/img/specialized7.jpg"),
         categoria: "Montaña"
     },
 ];
