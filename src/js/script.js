@@ -433,17 +433,29 @@ function mostrarFormulario() {
             });
             return;
         }
-
         const nombreInput = document.getElementById("nombre");
         const apellidoInput = document.getElementById("apellido");
+        const direccionInput = document.getElementById("direccion");
+        const celularInput = document.getElementById("celular");
 
         const nombre = mayus(nombreInput.value);
         const apellido = mayus(apellidoInput.value);
         const email = document.getElementById("email").value;
-        const direccion = document.getElementById("direccion").value;
+        const direccion = direccionInput.value;
         const numeroTarjeta = document.getElementById("tarjeta").value;
         const fechaVencimiento = document.getElementById("vencimiento").value;
         const cvv = document.getElementById("cvv").value;
+
+        console.log("Datos del comprador:");
+        console.log(`Nombre: ${nombre}`);
+        console.log(`Apellido: ${apellido}`);
+        console.log(`Correo: ${email}`);
+        console.log(`Dirección: ${direccion}`);
+        console.log(`Celular: ${celularInput.value}`);
+        console.log("Productos comprados:");
+        carrito.forEach((producto) => {
+            console.log(`- ${producto.nombre} - Cantidad: ${producto.cantidad}`);
+        });
 
         carrito.length = 0;
         localStorage.setItem("carrito", JSON.stringify(carrito));
