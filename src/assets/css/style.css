@@ -108,16 +108,28 @@ footer div ul li a img:hover {
     transform: translateY(-10px);
 }
 
+
 @media (max-width: 456px) {
+    header {
+        padding: 20px 30px;
+    }
+
+    header img {
+        float: none;
+    }
+
+    nav {
+        float: none;
+    }
+
     .grid__contenedor {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(1, auto);
         gap: 10px;
         padding: 10px;
     }
 
     .caja {
-        margin: 10px;
+        margin: 10px 0;
     }
 }
 
@@ -333,4 +345,12 @@ footer {
 
 .form {
     background-color: #000000;
+}
+
+@media (max-width: 720px) {
+
+    .productos-ruta,
+    .productos-montaña {
+        grid-template-columns: 1fr;
+    }
 }
