@@ -1,215 +1,4 @@
-const dbProductos = [
-    {
-        id: 1,
-        nombre: "Scott Rc Pro",
-        precio: 9900,
-        imagen: ("../assets/img/scott1.webp"),
-        categoria: "Montaña"
-    },
-    {
-        id: 2,
-        nombre: "Scott Spark Rc 900",
-        precio: 8900,
-        imagen: ("../assets/img/scott2.webp"),
-        categoria: "Montaña"
-    },
-    {
-        id: 3,
-        nombre: "Scott Scale 900 Rc",
-        precio: 5290,
-        imagen: ("../assets/img/scott3.webp"),
-        categoria: "Montaña"
-    },
-    {
-        id: 4,
-        nombre: "Scott Aspect 950",
-        precio: 939,
-        imagen: ("../assets/img/scott4.webp"),
-        categoria: "Montaña"
-    },
-    {
-        id: 5,
-        nombre: "Scott Contessa 60",
-        precio: 769,
-        imagen: ("../assets/img/scott5.webp"),
-        categoria: "Montaña"
-    },
-    {
-        id: 6,
-        nombre: "Scott Addict Rc 15",
-        precio: 9590,
-        imagen: ("../assets/img/scott6.webp"),
-        categoria: "Ruta"
-    },
-    {
-        id: 7,
-        nombre: "Scott Foil RC 30",
-        precio: 6390,
-        imagen: ("../assets/img/scott7.webp"),
-        categoria: "Ruta"
-    },
-    {
-        id: 8,
-        nombre: "Scott Addict Rc 40",
-        precio: 6190,
-        imagen: ("../assets/img/scott8.webp"),
-        categoria: "Ruta"
-    },
-    {
-        id: 9,
-        nombre: "Scott Addict 20",
-        precio: 2969,
-        imagen: ("../assets/img/scott9.webp"),
-        categoria: "Ruta"
-    },
-    {
-        id: 10,
-        nombre: "Scott Speedster 30",
-        precio: 1649,
-        imagen: ("../assets/img/scott10.webp"),
-        categoria: "Ruta"
-    },
-    {
-        id: 11,
-        nombre: "Trek Madone SLR 9 AXS Gen 7",
-        precio: 17690,
-        imagen: ("../assets/img/trek1.png"),
-        categoria: "Ruta"
-    },
-    {
-        id: 12,
-        nombre: "Trek Émonda SL 7 Disc",
-        precio: 7700,
-        imagen: ("../assets/img/trek2.webp"),
-        categoria: "Ruta"
-    },
-    {
-        id: 13,
-        nombre: "Trek Domane 5 Disc",
-        precio: 2700,
-        imagen: ("/src/assets/img/trek3.jpeg"),
-        categoria: "Ruta"
-    },
-    {
-        id: 14,
-        nombre: "TREK RAIL 5 (Eléctrica)",
-        precio: 7400,
-        imagen: ("../assets/img/trek4.jpeg"),
-        categoria: "Montaña"
-    },
-    {
-        id: 15,
-        nombre: "Trek Procaliber 9.5",
-        precio: 3200,
-        imagen: ("../assets/img/trek5.jpeg"),
-        categoria: "Montaña"
-    },
-    {
-        id: 16,
-        nombre: "Trek X-Caliber 8",
-        precio: 2140,
-        imagen: ("../assets/img/trek6.jpeg"),
-        categoria: "Montaña"
-    },
-    {
-        id: 17,
-        nombre: "TREK Verve 1",
-        precio: 900,
-        imagen: ("../assets/img/trek7.jpeg"),
-        categoria: "Montaña"
-    },
-    {
-        id: 18,
-        nombre: "Oltre Rc Tour de France",
-        precio: 19000,
-        imagen: ("../assets/img/bianchi1.jpg"),
-        categoria: "Ruta"
-    },
-    {
-        id: 19,
-        nombre: "Bianchi Aria E-Road",
-        precio: 6590,
-        imagen: ("../assets/img/bianchi2.jpg"),
-        categoria: "Ruta"
-    },
-    {
-        id: 20,
-        nombre: "Bianchi Nirone 7 Alu Claris",
-        precio: 1349,
-        imagen: ("../assets/img/bianchi3.jpg"),
-        categoria: "Ruta"
-    },
-    {
-        id: 21,
-        nombre: "Bianchi Methanol",
-        precio: 7790,
-        imagen: ("../assets/img/bianchi4.jpg"),
-        categoria: "Montaña"
-    },
-    {
-        id: 22,
-        nombre: "Bianchi Nitron 9.4",
-        precio: 2890,
-        imagen: ("../assets/img/bianchi5.jpg"),
-        categoria: "Montaña"
-    },
-    {
-        id: 23,
-        nombre: "Bianchi Duel / 29",
-        precio: 849,
-        imagen: ("../assets/img/bianchi6.jpg"),
-        categoria: "Montaña"
-    },
-    {
-        id: 24,
-        nombre: "DIVERGE STR S-WORKS",
-        precio: 15490,
-        imagen: ("../assets/img/specialized1.jpg"),
-        categoria: "Ruta"
-    },
-    {
-        id: 25,
-        nombre: "DIVERGE EXPERT CARBON",
-        precio: 6536,
-        imagen: ("../assets/img/specialized2.jpg"),
-        categoria: "Ruta"
-    },
-    {
-        id: 26,
-        nombre: "Allez E5 Sport",
-        precio: 1690,
-        imagen: ("../assets/img/specialized3.jpg"),
-        categoria: "Ruta"
-    },
-    {
-        id: 27,
-        nombre: "Allez E5 Flored",
-        precio: 1290,
-        imagen: ("../assets/img/specialized4.jpg"),
-        categoria: "Ruta"
-    },
-    {
-        id: 28,
-        nombre: "S-WORKS EPIC WORLD CUP",
-        precio: 15690,
-        imagen: ("../assets/img/specialized5.jpg"),
-        categoria: "Montaña"
-    },
-    {
-        id: 29,
-        nombre: "EPIC COMP BRA FLORED",
-        precio: 4712,
-        imagen: ("../assets/img/specialized6.jpg"),
-        categoria: "Montaña"
-    },
-    {
-        id: 30,
-        nombre: "ROCKHOPPER SPORT",
-        precio: 890,
-        imagen: ("../assets/img/specialized7.jpg"),
-        categoria: "Montaña"
-    },
-];
+let productos = [];
 
 const carritoGuardado = localStorage.getItem("carrito");
 const carrito = carritoGuardado ? JSON.parse(carritoGuardado) : [];
@@ -218,40 +7,86 @@ function crearTemplate() {
     const productosMontana = [];
     const productosRuta = [];
 
-    dbProductos.forEach((producto) => {
-        const { id, nombre, precio, imagen, categoria } = producto;
+    // Verifica que la variable "productos" esté definida y tenga datos válidos
+    if (typeof productos !== "undefined" && Array.isArray(productos)) {
+        productos.forEach((producto) => {
+            const { id, nombre, precio, imagen, categoria } = producto;
 
-        const productoHTML = `
-            <div class="producto">
-                <img class="producto-imagen" src="${imagen}" alt="${nombre}" />
-                <h2>${nombre}</h2>
-                <p>Precio: U$S ${precio}</p>
-                <button class="btnAgregar" data-id="${id}">Añadir al Carrito</button>
-            </div>
-        `;
+            const productoHTML = `
+                <div class="producto">
+                    <img class="producto-imagen" src="${imagen}" alt="${nombre}" />
+                    <h2>${nombre}</h2>
+                    <p>Precio: U$S ${precio}</p>
+                    <button class="btnAgregar" data-id="${id}">Añadir al Carrito</button>
+                </div>
+            `;
 
-        if (categoria === "Montaña") {
-            productosMontana.push(productoHTML);
-        } else if (categoria === "Ruta") {
-            productosRuta.push(productoHTML);
-        }
-    });
+            if (categoria === "Montaña") {
+                productosMontana.push(productoHTML);
+            } else if (categoria === "Ruta") {
+                productosRuta.push(productoHTML);
+            }
+        });
 
-    const productosMontanaContainer = document.querySelector(".productos-montaña");
-    const productosRutaContainer = document.querySelector(".productos-ruta");
+        const productosMontanaContainer = document.querySelector(".productos-montaña");
+        const productosRutaContainer = document.querySelector(".productos-ruta");
 
-    productosMontanaContainer.innerHTML = productosMontana.join("");
-    productosRutaContainer.innerHTML = productosRuta.join("");
+        productosMontanaContainer.innerHTML = productosMontana.join("");
+        productosRutaContainer.innerHTML = productosRuta.join("");
+    } else {
+        console.error("La variable 'productos' no está definida o no es un array válido.");
+    }
 }
 
+function cargarProductosDesdeJSON() {
+    fetch("../js/productos.json")
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Error al cargar el archivo JSON.");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            productos = data;
+            crearTemplate();
+        })
+        .catch((error) => {
+            console.error("Error al cargar el archivo JSON:", error);
+        });
+}
+
+cargarProductosDesdeJSON();
 crearTemplate();
 renderizarCarrito();
 actualizarBotonPagar();
 
+let cancelarSimulacion = false;
+
+function simularProceso() {
+    return new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => {
+            if (cancelarSimulacion) {
+                reject("Proceso cancelado");
+            } else {
+                const exito = Math.random() < 0.5;
+                if (exito) {
+                    resolve("Proceso completado con éxito");
+                } else {
+                    reject("Proceso fallido");
+                }
+            }
+        }, 60000);
+        cancelarSimulacion = () => {
+            clearTimeout(timeout);
+            cancelarSimulacion = true;
+        };
+    });
+}
+
 document.addEventListener("click", (e) => {
     if (e.target.classList.contains("btnAgregar")) {
         const id = parseInt(e.target.getAttribute("data-id"));
-        const producto = dbProductos.find((p) => p.id === id);
+        const producto = productos.find((p) => p.id === id);
         agregarAlCarrito(producto);
     } else if (e.target.classList.contains("btnEliminar")) {
         const id = parseInt(e.target.getAttribute("data-id"));
@@ -269,7 +104,22 @@ btnComprar.addEventListener("click", () => {
             text: '¡Agrega productos al carrito para continuar!',
         });
     } else {
-        mostrarFormulario();
+        simularProceso()
+            .then((resultado) => {
+                console.log(resultado);
+                mostrarFormulario();
+            })
+            .catch((error) => {
+                console.error(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un problema al procesar tu compra. Por favor, intenta nuevamente más tarde.',
+                });
+            })
+            .finally(() => {
+                console.log("La compra se ha intentado procesar.");
+            });
     }
 });
 
@@ -364,55 +214,57 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+let cancelarCompraTimeout;
+
 function mostrarFormulario() {
     Swal.fire({
         title: 'Completa tus datos para realizar la compra',
         html: `
-                <form id="checkoutForm">
-                    <div class="form-group">
-                        <label for="nombre"></label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="apellido"></label>
-                        <input type="text" class="form-control" id="apellido" placeholder="Apellido" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email"></label>
-                        <input type="email" class="form-control" id="email" placeholder="Email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="direccion"></label>
-                        <textarea class="form-control" id="direccion" placeholder="Dirección de Envío" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="Celular"></label>
-                        <input type="text" class="form-control" id="celular" placeholder="Celular" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="tarjeta"></label>
-                        <input type="text" class="form-control" id="tarjeta" placeholder="Número de Tarjeta" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="vencimiento"></label>
-                        <input type="text" class="form-control" id="vencimiento" placeholder="MM/YY" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="cvv"></label>
-                        <input type="text" class="form-control" id="cvv" placeholder="CVV" required>
-                    </div>
-                </form>
-            `,
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label for="nombre"></label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellido"></label>
+                    <input type="text" class="form-control" id="apellido" placeholder="Apellido" required>
+                </div>
+                <div class="form-group">
+                    <label for="email"></label>
+                    <input type="email" class="form-control" id="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="direccion"></label>
+                    <textarea class="form-control" id="direccion" placeholder="Dirección de Envío" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="Celular"></label>
+                    <input type="text" class="form-control" id="celular" placeholder="Celular" required>
+                </div>
+                <div class="form-group">
+                    <label for="tarjeta"></label>
+                    <input type="text" class="form-control" id="tarjeta" placeholder="Número de Tarjeta" required>
+                </div>
+                <div class="form-group">
+                    <label for="vencimiento"></label>
+                    <input type="text" class="form-control" id="vencimiento" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv"></label>
+                    <input type="text" class="form-control" id="cvv" placeholder="CVV" required>
+                </div>
+            </form>
+        `,
         confirmButtonText: 'Pagar',
         showCancelButton: true,
         cancelButtonText: 'Cancelar',
         showConfirmButton: true,
-
-
     }).then((result) => {
         if (result.isDismissed) {
+            cancelarSimulacion();
             return;
         }
+
         const campos = ["nombre", "apellido", "email", "direccion", "tarjeta", "vencimiento", "cvv"];
         let campoVacio = false;
         campos.forEach((campo) => {
@@ -433,11 +285,11 @@ function mostrarFormulario() {
             });
             return;
         }
+
         const nombreInput = document.getElementById("nombre");
         const apellidoInput = document.getElementById("apellido");
         const direccionInput = document.getElementById("direccion");
         const celularInput = document.getElementById("celular");
-
         const nombre = mayus(nombreInput.value);
         const apellido = mayus(apellidoInput.value);
         const email = document.getElementById("email").value;
@@ -469,6 +321,15 @@ function mostrarFormulario() {
             text: `Gracias por tu compra, ${nombre} ${apellido}!`,
         });
     });
+
+    cancelarCompraTimeout = setTimeout(() => {
+        Swal.fire({
+            icon: 'info',
+            title: 'Compra cancelada',
+            text: 'La compra se ha cancelado debido a la inactividad.',
+        });
+        cancelarSimulacion();
+    }, 60000);
 }
 
 function mayus(texto) {
