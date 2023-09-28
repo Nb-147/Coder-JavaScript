@@ -1,14 +1,19 @@
+// Definición de una matriz vacía para almacenar productos
 let productos = [];
 
+// Recuperar el carrito de compras guardado en el LocalStorage o crear un nuevo carrito si no existe
 const carritoGuardado = localStorage.getItem("carrito");
 const carrito = carritoGuardado ? JSON.parse(carritoGuardado) : [];
 
+// Función para crear el template HTML de los productos
 function crearTemplate() {
+    // Arrays para almacenar productos de diferentes categorías
     const productosMontana = [];
     const productosRuta = [];
 
-    // Verifica que la variable "productos" esté definida y tenga datos válidos
+    // Verifica si la variable "productos" está definida y si es un array
     if (typeof productos !== "undefined" && Array.isArray(productos)) {
+        //Iterar a través de los productos y construir el HTML para cada uno
         productos.forEach((producto) => {
             const { id, nombre, precio, imagen, categoria } = producto;
 
@@ -21,6 +26,7 @@ function crearTemplate() {
                 </div>
             `;
 
+            // Clasifica los productos en las categorías correspondientes
             if (categoria === "Montaña") {
                 productosMontana.push(productoHTML);
             } else if (categoria === "Ruta") {
@@ -28,9 +34,11 @@ function crearTemplate() {
             }
         });
 
+        // Obtener contenedores HTML para productos de montaña y ruta
         const productosMontanaContainer = document.querySelector(".productos-montaña");
         const productosRutaContainer = document.querySelector(".productos-ruta");
 
+        // Rellenar los contenedores con productos clasificados
         productosMontanaContainer.innerHTML = productosMontana.join("");
         productosRutaContainer.innerHTML = productosRuta.join("");
     } else {
@@ -38,7 +46,9 @@ function crearTemplate() {
     }
 }
 
+// Función para cargar productos desde un JSON
 function cargarProductosDesdeJSON() {
+    // Realizar una solicitud para obtener el archivo JSON de productos
     fetch("../js/productos.json")
         .then((response) => {
             if (!response.ok) {
@@ -47,6 +57,7 @@ function cargarProductosDesdeJSON() {
             return response.json();
         })
         .then((data) => {
+            // Almacena los productos cargados en la variable 'productos' y crear el template
             productos = data;
             crearTemplate();
         })
@@ -60,8 +71,7 @@ crearTemplate();
 renderizarCarrito();
 actualizarBotonPagar();
 
-let cancelarSimulacion = false;
-
+// Función para simular un proceso de compra
 function simularProceso() {
     return new Promise((resolve, reject) => {
         const timeout = setTimeout(() => {
@@ -83,27 +93,33 @@ function simularProceso() {
     });
 }
 
+// Escuchar eventos de clic en la página
 document.addEventListener("click", (e) => {
     if (e.target.classList.contains("btnAgregar")) {
+        // Si se hace clic en un botón "Añadir al Carrito", agregar el producto correspondiente
         const id = parseInt(e.target.getAttribute("data-id"));
         const producto = productos.find((p) => p.id === id);
         agregarAlCarrito(producto);
     } else if (e.target.classList.contains("btnEliminar")) {
+        // Si se hace clic en un botón "Eliminar", eliminar el producto del carrito
         const id = parseInt(e.target.getAttribute("data-id"));
         eliminarDelCarrito(id);
     }
 });
 
+// Obtener el botón "Comprar" y agregar un evento de clic
 const btnComprar = document.getElementById("btnComprar");
 
 btnComprar.addEventListener("click", () => {
     if (carrito.length === 0) {
+        // Mostrar un mensaje de error si el carrito está vacío
         Swal.fire({
             icon: 'error',
             title: 'Carrito Vacío',
             text: '¡Agrega productos al carrito para continuar!',
         });
     } else {
+        // Simular un proceso de compra y mostrar el formulario de pago
         simularProceso()
             .then((resultado) => {
                 console.log(resultado);
@@ -125,10 +141,12 @@ btnComprar.addEventListener("click", () => {
 
 function agregarAlCarrito(producto) {
     if (producto) {
+        // Buscar si el producto ya existe en el carrito
         const productoBusqueda = carrito.find((p) => p.id === producto.id);
         if (productoBusqueda) {
             productoBusqueda.cantidad++;
         } else {
+            // Si no existe, agregar el producto al carrito con cantidad 1
             const nuevoProducto = {
                 id: producto.id,
                 nombre: producto.nombre,
@@ -137,6 +155,7 @@ function agregarAlCarrito(producto) {
             };
             carrito.push(nuevoProducto);
         }
+        // Actualiza el carrito en el Local Storage y en la página
         localStorage.setItem("carrito", JSON.stringify(carrito));
         renderizarCarrito();
         actualizarBotonPagar();
@@ -144,6 +163,7 @@ function agregarAlCarrito(producto) {
     }
 }
 
+// Función para eliminar un producto del carrito
 function eliminarDelCarrito(id) {
     const index = carrito.findIndex((p) => p.id === id);
     if (index !== -1) {
@@ -158,6 +178,7 @@ function eliminarDelCarrito(id) {
     }
 }
 
+// Función para renderizar el contenido del carrito en la página
 function renderizarCarrito() {
     const carritoSelector = document.querySelector("#carrito-list");
     carritoSelector.innerHTML = "";
@@ -187,6 +208,7 @@ function renderizarCarrito() {
     cantidadProductosElement.textContent = cantidadProductos;
 }
 
+// Función para actualizar el botón "Pagar" en función del contenido del carrito
 function actualizarBotonPagar() {
     const btnContenedor = document.getElementById("btnContenedor");
     btnContenedor.innerHTML = "";
@@ -205,6 +227,7 @@ function actualizarBotonPagar() {
     }
 }
 
+// Escuchar el evento "DOMContentLoaded" para mostrar el formulario de pago
 document.addEventListener("DOMContentLoaded", () => {
     const btnPagar = document.getElementById("btnPagar");
     if (btnPagar) {
@@ -214,8 +237,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// Función para cancelar la simulación de compra
+function cancelarSimulacion() {
+    clearTimeout(cancelarCompraTimeout);
+    Swal.fire({
+        icon: 'info',
+        title: 'Compra cancelada',
+        text: 'La compra se ha cancelado debido a la inactividad.',
+    });
+}
+
+// Variable para controlar el tiempo de cancelación de la compra
 let cancelarCompraTimeout;
 
+// Función para mostrar el formulario de pago
 function mostrarFormulario() {
     Swal.fire({
         title: 'Completa tus datos para realizar la compra',
@@ -261,10 +296,12 @@ function mostrarFormulario() {
         showConfirmButton: true,
     }).then((result) => {
         if (result.isDismissed) {
+            // Cancelar la simulación de compra si se cierra el formulario
             cancelarSimulacion();
             return;
         }
 
+        // Verificar si se completaron todos los campos del formulario
         const campos = ["nombre", "apellido", "email", "direccion", "tarjeta", "vencimiento", "cvv"];
         let campoVacio = false;
         campos.forEach((campo) => {
@@ -276,6 +313,7 @@ function mostrarFormulario() {
         });
 
         if (campoVacio) {
+            // Mostrar un mensaje de error si falta algún campo requerido
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -286,6 +324,7 @@ function mostrarFormulario() {
             return;
         }
 
+        // Obtener los datos del comprador y productos comprados
         const nombreInput = document.getElementById("nombre");
         const apellidoInput = document.getElementById("apellido");
         const direccionInput = document.getElementById("direccion");
@@ -298,6 +337,7 @@ function mostrarFormulario() {
         const fechaVencimiento = document.getElementById("vencimiento").value;
         const cvv = document.getElementById("cvv").value;
 
+        // Imprimir los datos del comprador y reiniciar el carrito
         console.log("Datos del comprador:");
         console.log(`Nombre: ${nombre}`);
         console.log(`Apellido: ${apellido}`);
@@ -312,6 +352,7 @@ function mostrarFormulario() {
         carrito.length = 0;
         localStorage.setItem("carrito", JSON.stringify(carrito));
 
+        // Actualizar el carrito en la página y mostrar un mensaje de compra exitosa
         renderizarCarrito();
         actualizarBotonPagar();
 
@@ -322,6 +363,7 @@ function mostrarFormulario() {
         });
     });
 
+    // Configurar un temporizador para cancelar la compra por inactividad
     cancelarCompraTimeout = setTimeout(() => {
         Swal.fire({
             icon: 'info',
@@ -332,6 +374,7 @@ function mostrarFormulario() {
     }, 60000);
 }
 
+// Función para convertir la primera letra de una cadena en mayúscula
 function mayus(texto) {
     return texto.charAt(0).toUpperCase() + texto.slice(1);
 }
