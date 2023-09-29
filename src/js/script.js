@@ -5,6 +5,9 @@ let productos = [];
 const carritoGuardado = localStorage.getItem("carrito");
 const carrito = carritoGuardado ? JSON.parse(carritoGuardado) : [];
 
+// Variable para controlar el tiempo de cancelación de la compra
+let cancelarCompraTimeout;
+
 // Función para crear el template HTML de los productos
 function crearTemplate() {
     // Arrays para almacenar productos de diferentes categorías
@@ -16,7 +19,6 @@ function crearTemplate() {
         //Iterar a través de los productos y construir el HTML para cada uno
         productos.forEach((producto) => {
             const { id, nombre, precio, imagen, categoria } = producto;
-
             const productoHTML = `
                 <div class="producto">
                     <img class="producto-imagen" src="${imagen}" alt="${nombre}" />
@@ -25,7 +27,6 @@ function crearTemplate() {
                     <button class="btnAgregar" data-id="${id}">Añadir al Carrito</button>
                 </div>
             `;
-
             // Clasifica los productos en las categorías correspondientes
             if (categoria === "Montaña") {
                 productosMontana.push(productoHTML);
@@ -33,11 +34,9 @@ function crearTemplate() {
                 productosRuta.push(productoHTML);
             }
         });
-
         // Obtener contenedores HTML para productos de montaña y ruta
         const productosMontanaContainer = document.querySelector(".productos-montaña");
         const productosRutaContainer = document.querySelector(".productos-ruta");
-
         // Rellenar los contenedores con productos clasificados
         productosMontanaContainer.innerHTML = productosMontana.join("");
         productosRutaContainer.innerHTML = productosRuta.join("");
@@ -86,7 +85,7 @@ function simularProceso() {
                 }
             }
         }, 60000);
-        cancelarSimulacion = () => {
+        cancelarCompraTimeout = () => {
             clearTimeout(timeout);
             cancelarSimulacion = true;
         };
@@ -146,7 +145,7 @@ function agregarAlCarrito(producto) {
         if (productoBusqueda) {
             productoBusqueda.cantidad++;
         } else {
-            // Si no existe, agregar el producto al carrito con cantidad 1
+            // Si no existe, agregar el producto al carrito
             const nuevoProducto = {
                 id: producto.id,
                 nombre: producto.nombre,
@@ -184,7 +183,6 @@ function renderizarCarrito() {
     carritoSelector.innerHTML = "";
     let totalCarrito = 0;
     let cantidadProductos = 0;
-
     if (carrito.length > 0) {
         carrito.forEach((producto) => {
             const { id, nombre, precio, cantidad } = producto;
@@ -212,13 +210,11 @@ function renderizarCarrito() {
 function actualizarBotonPagar() {
     const btnContenedor = document.getElementById("btnContenedor");
     btnContenedor.innerHTML = "";
-
     if (carrito.length > 0) {
         btnContenedor.innerHTML = `
             <button id="btnPagar" class="btn btnAgregar">Pagar</button>
         `;
     }
-
     const btnPagar = document.getElementById("btnPagar");
     if (btnPagar) {
         btnPagar.addEventListener("click", () => {
@@ -227,7 +223,7 @@ function actualizarBotonPagar() {
     }
 }
 
-// Escuchar el evento "DOMContentLoaded" para mostrar el formulario de pago
+// Escuchar el evento para mostrar el formulario de pago
 document.addEventListener("DOMContentLoaded", () => {
     const btnPagar = document.getElementById("btnPagar");
     if (btnPagar) {
@@ -247,11 +243,23 @@ function cancelarSimulacion() {
     });
 }
 
-// Variable para controlar el tiempo de cancelación de la compra
-let cancelarCompraTimeout;
-
 // Función para mostrar el formulario de pago
 function mostrarFormulario() {
+    // Eliminar el temporizador si existe
+    if (cancelarCompraTimeout) {
+        clearTimeout(cancelarCompraTimeout);
+    }
+
+    // Configurar un nuevo temporizador para cancelar la compra por inactividad
+    cancelarCompraTimeout = setTimeout(() => {
+        Swal.fire({
+            icon: 'info',
+            title: 'Compra cancelada',
+            text: 'La compra se ha cancelado debido a la inactividad.',
+        });
+        cancelarSimulacion();
+    }, 60000);
+
     Swal.fire({
         title: 'Completa tus datos para realizar la compra',
         html: `
@@ -296,7 +304,6 @@ function mostrarFormulario() {
         showConfirmButton: true,
     }).then((result) => {
         if (result.isDismissed) {
-            // Cancelar la simulación de compra si se cierra el formulario
             cancelarSimulacion();
             return;
         }
@@ -313,7 +320,6 @@ function mostrarFormulario() {
         });
 
         if (campoVacio) {
-            // Mostrar un mensaje de error si falta algún campo requerido
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -329,15 +335,15 @@ function mostrarFormulario() {
         const apellidoInput = document.getElementById("apellido");
         const direccionInput = document.getElementById("direccion");
         const celularInput = document.getElementById("celular");
-        const nombre = mayus(nombreInput.value);
-        const apellido = mayus(apellidoInput.value);
+        const nombre = nombreInput.value.toUpperCase();
+        const apellido = apellidoInput.value.toUpperCase();
         const email = document.getElementById("email").value;
         const direccion = direccionInput.value;
         const numeroTarjeta = document.getElementById("tarjeta").value;
         const fechaVencimiento = document.getElementById("vencimiento").value;
         const cvv = document.getElementById("cvv").value;
 
-        // Imprimir los datos del comprador y reiniciar el carrito
+        // Mostrar los datos del comprador y reiniciar el carrito
         console.log("Datos del comprador:");
         console.log(`Nombre: ${nombre}`);
         console.log(`Apellido: ${apellido}`);
@@ -362,19 +368,4 @@ function mostrarFormulario() {
             text: `Gracias por tu compra, ${nombre} ${apellido}!`,
         });
     });
-
-    // Configurar un temporizador para cancelar la compra por inactividad
-    cancelarCompraTimeout = setTimeout(() => {
-        Swal.fire({
-            icon: 'info',
-            title: 'Compra cancelada',
-            text: 'La compra se ha cancelado debido a la inactividad.',
-        });
-        cancelarSimulacion();
-    }, 60000);
-}
-
-// Función para convertir la primera letra de una cadena en mayúscula
-function mayus(texto) {
-    return texto.charAt(0).toUpperCase() + texto.slice(1);
 }
