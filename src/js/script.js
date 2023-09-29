@@ -16,7 +16,7 @@ function crearTemplate() {
 
     // Verifica si la variable "productos" está definida y si es un array
     if (typeof productos !== "undefined" && Array.isArray(productos)) {
-        //Iterar a través de los productos y construir el HTML para cada uno
+        // Iterar a través de los productos y construir el HTML para cada uno
         productos.forEach((producto) => {
             const { id, nombre, precio, imagen, categoria } = producto;
             const productoHTML = `
@@ -281,20 +281,20 @@ function mostrarFormulario() {
                     <textarea class="form-control" id="direccion" placeholder="Dirección de Envío" required></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="Celular"></label>
-                    <input type="text" class="form-control" id="celular" placeholder="Celular" required>
+                    <label for="celular"></label>
+                    <input type="text" class="form-control" id="celular" placeholder="Celular" required pattern="[0-9]+">
                 </div>
                 <div class="form-group">
                     <label for="tarjeta"></label>
-                    <input type="text" class="form-control" id="tarjeta" placeholder="Número de Tarjeta" required>
+                    <input type="text" class="form-control" id="tarjeta" placeholder="Número de Tarjeta" required pattern="[0-9]{16}" maxlength="16">
                 </div>
                 <div class="form-group">
                     <label for="vencimiento"></label>
-                    <input type="text" class="form-control" id="vencimiento" placeholder="MM/YY" required>
+                    <input type="text" class="form-control" id="vencimiento" placeholder="MM/YY" required pattern="(0[1-9]|1[0-2])\/[0-9]{2}" maxlength="5">
                 </div>
                 <div class="form-group">
                     <label for="cvv"></label>
-                    <input type="text" class="form-control" id="cvv" placeholder="CVV" required>
+                    <input type="text" class="form-control" id="cvv" placeholder="CVV" required pattern="[0-9]{3}" maxlength="3">
                 </div>
             </form>
         `,
@@ -307,42 +307,19 @@ function mostrarFormulario() {
             cancelarSimulacion();
             return;
         }
-
-        // Verificar si se completaron todos los campos del formulario
-        const campos = ["nombre", "apellido", "email", "direccion", "tarjeta", "vencimiento", "cvv"];
-        let campoVacio = false;
-        campos.forEach((campo) => {
-            const valor = document.getElementById(campo).value;
-            if (!valor) {
-                campoVacio = true;
-                return;
-            }
-        });
-
-        if (campoVacio) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: '¡Debes completar todos los campos para continuar!',
-            }).then(() => {
-                mostrarFormulario();
-            });
-            return;
-        }
-
         // Obtener los datos del comprador y productos comprados
         const nombreInput = document.getElementById("nombre");
         const apellidoInput = document.getElementById("apellido");
         const direccionInput = document.getElementById("direccion");
         const celularInput = document.getElementById("celular");
-        const nombre = nombreInput.value.toUpperCase();
-        const apellido = apellidoInput.value.toUpperCase();
+        const nombre = nombreInput.value.charAt(0).toUpperCase() + nombreInput.value.slice(1);
+        const apellido = apellidoInput.value.charAt(0).toUpperCase() + apellidoInput.value.slice(1);
         const email = document.getElementById("email").value;
         const direccion = direccionInput.value;
         const numeroTarjeta = document.getElementById("tarjeta").value;
         const fechaVencimiento = document.getElementById("vencimiento").value;
         const cvv = document.getElementById("cvv").value;
-
+        
         // Mostrar los datos del comprador y reiniciar el carrito
         console.log("Datos del comprador:");
         console.log(`Nombre: ${nombre}`);
@@ -355,17 +332,65 @@ function mostrarFormulario() {
             console.log(`- ${producto.nombre} - Cantidad: ${producto.cantidad}`);
         });
 
-        carrito.length = 0;
-        localStorage.setItem("carrito", JSON.stringify(carrito));
 
-        // Actualizar el carrito en la página y mostrar un mensaje de compra exitosa
-        renderizarCarrito();
-        actualizarBotonPagar();
+        // Validar los campos del formulario
+        if (nombre && apellido && email && direccion && celular && tarjeta && vencimiento && cvv) {
+            Swal.fire({
+                icon: 'success',
+                title: '¡Compra Exitosa!',
+                text: `${nombre} ${apellido} ¡Tu compra ha sido procesada con éxito! Nos contactaremos por email con detalles sobre el envío.`,
+            });
 
-        Swal.fire({
-            icon: 'success',
-            title: 'Compra exitosa',
-            text: `Gracias por tu compra, ${nombre} ${apellido}!`,
-        });
+            // Limpiar el carrito y el Local Storage
+            carrito.length = 0;
+            localStorage.removeItem("carrito");
+            renderizarCarrito();
+            actualizarBotonPagar();
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Por favor, completa todos los campos del formulario.',
+            });
+        }
     });
 }
+
+// Filtrado por precio
+document.getElementById("btnFiltrar").addEventListener("click", () => {
+    const precioMinSelector = document.getElementById("precioMin");
+    const precioMaxSelector = document.getElementById("precioMax");
+
+    const precioMin = parseFloat(precioMinSelector.value);
+    const precioMax = parseFloat(precioMaxSelector.value);
+
+    if (!isNaN(precioMin) && !isNaN(precioMax) && precioMin <= precioMax) {
+        const productosFiltrados = productos.filter((producto) => {
+            return producto.precio >= precioMin && producto.precio <= precioMax;
+        });
+
+        // Limpia los contenedores de productos
+        document.querySelector(".productos-montaña").innerHTML = "";
+        document.querySelector(".productos-ruta").innerHTML = "";
+
+        // Renderiza los productos filtrados
+        productosFiltrados.forEach((producto) => {
+            const categoriaContainer = document.querySelector(`.productos-${producto.categoria.toLowerCase()}`);
+            const productoHTML = `
+                <div class="producto">
+                    <img class="producto-imagen" src="${producto.imagen}" alt="${producto.nombre}" />
+                    <h2>${producto.nombre}</h2>
+                    <p>Precio: U$S ${producto.precio}</p>
+                    <button class="btnAgregar" data-id="${producto.id}">Añadir al Carrito</button>
+                </div>
+            `;
+            categoriaContainer.innerHTML += productoHTML;
+        });
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Por favor, ingresa valores de precio válidos y asegúrate de que el precio mínimo sea menor o igual al precio máximo.',
+        });
+    }
+});

@@ -184,6 +184,18 @@ footer div ul li a img:hover {
     text-align: center;
 }
 
+.filtro {
+    font-family: "font";
+    background: linear-gradient(to right, rgb(162, 162, 162), rgb(0, 0, 0));
+    text-shadow: 1px 1px 7px #ffffff;
+    color: rgb(0, 0, 0);
+    font-size: 1.5rem;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 40px;
+    text-align: center;
+}
+
 #carrito-list {
     list-style: none;
     padding: 0;
@@ -249,16 +261,19 @@ footer {
 }
 
 .contacto__form {
+    font-family: "font";
     background-color: #6d6c6c;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    text-shadow: 1px 1px 7px #ffffff;
 }
 
 .contacto__form h2 {
     font-size: 24px;
     text-align: center;
     margin-bottom: 20px;
+    color: #000000;
 }
 
 .contacto__form hr {
