@@ -351,6 +351,9 @@ function mostrarFormulario() {
                 icon: 'error',
                 title: 'Error',
                 text: 'Por favor, completa todos los campos del formulario.',
+            }).then(() => {
+                // En caso de error, volver a mostrar el formulario
+                mostrarFormulario();
             });
         }
     });
@@ -393,4 +396,14 @@ document.getElementById("btnFiltrar").addEventListener("click", () => {
             text: 'Por favor, ingresa valores de precio válidos y asegúrate de que el precio mínimo sea menor o igual al precio máximo.',
         });
     }
+});
+
+// Agrega un evento de clic al botón "Restablecer"
+const btnRestablecer = document.getElementById("btnRestablecer");
+btnRestablecer.addEventListener("click", () => {
+    // Restablecer los valores de los campos de filtro de precios
+    document.getElementById("precioMin").value = "";
+    document.getElementById("precioMax").value = "";
+    // Mostrar todos los productos nuevamente
+    crearTemplate();
 });

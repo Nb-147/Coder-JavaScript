@@ -118,9 +118,6 @@ footer div ul li a img:hover {
         float: none;
     }
 
-    nav {
-        float: none;
-    }
 
     .grid__contenedor {
         grid-template-columns: 1fr;
