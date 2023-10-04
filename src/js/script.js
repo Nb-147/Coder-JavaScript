@@ -159,6 +159,20 @@ function agregarAlCarrito(producto) {
         renderizarCarrito();
         actualizarBotonPagar();
         console.log("Producto recibido:", producto);
+
+        // Mostrar una notificación Toastify
+        Toastify({
+            text: `Se ha añadido "${producto.nombre}" al carrito.`,
+            duration: 4000, 
+            gravity: "bottom", 
+            backgroundColor: "blue", 
+        }).showToast();
+
+        // Actualiza el carrito en el Local Storage y en la página
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        renderizarCarrito();
+        actualizarBotonPagar();
+        console.log("Producto recibido:", producto);
     }
 }
 
@@ -316,10 +330,11 @@ function mostrarFormulario() {
         const apellido = apellidoInput.value.charAt(0).toUpperCase() + apellidoInput.value.slice(1);
         const email = document.getElementById("email").value;
         const direccion = direccionInput.value;
+        const celular = celularInput.value;
         const numeroTarjeta = document.getElementById("tarjeta").value;
         const fechaVencimiento = document.getElementById("vencimiento").value;
         const cvv = document.getElementById("cvv").value;
-        
+
         // Mostrar los datos del comprador y reiniciar el carrito
         console.log("Datos del comprador:");
         console.log(`Nombre: ${nombre}`);
@@ -332,9 +347,27 @@ function mostrarFormulario() {
             console.log(`- ${producto.nombre} - Cantidad: ${producto.cantidad}`);
         });
 
-
         // Validar los campos del formulario
         if (nombre && apellido && email && direccion && celular && tarjeta && vencimiento && cvv) {
+            // Enviar el correo utilizando EmailJS
+            const serviceID = 'default_service';
+            const templateID = 'template_zx5x7i5';
+            const templateParams = {
+                nombre: nombre,
+                apellido: apellido,
+                email: email,
+                direccion: direccion,
+                celular: celular,
+            };
+
+            emailjs.send(serviceID, templateID, templateParams)
+                .then((response) => {
+                    console.log('Correo enviado:', response);
+                })
+                .catch((error) => {
+                    console.error('Error al enviar el correo:', error);
+                });
+
             Swal.fire({
                 icon: 'success',
                 title: '¡Compra Exitosa!',
