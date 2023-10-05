@@ -165,14 +165,15 @@ function agregarAlCarrito(producto) {
             text: `Se ha añadido "${producto.nombre}" al carrito.`,
             duration: 4000, 
             gravity: "bottom", 
-            backgroundColor: "blue", 
+            style: {
+                background: "blue" 
+            }
         }).showToast();
 
         // Actualiza el carrito en el Local Storage y en la página
         localStorage.setItem("carrito", JSON.stringify(carrito));
         renderizarCarrito();
         actualizarBotonPagar();
-        console.log("Producto recibido:", producto);
     }
 }
 
@@ -437,6 +438,5 @@ btnRestablecer.addEventListener("click", () => {
     // Restablecer los valores de los campos de filtro de precios
     document.getElementById("precioMin").value = "";
     document.getElementById("precioMax").value = "";
-    // Mostrar todos los productos nuevamente
     crearTemplate();
 });
